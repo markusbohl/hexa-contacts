@@ -9,6 +9,6 @@ gulp.task(task.BUILD_TS, () => {
 
     return tsProject.src()
         .pipe(ts(tsProject))
-        .js.pipe(gulp.dest("dist"));
+        .js.pipe(gulp.dest(path.DIST));
 });
 

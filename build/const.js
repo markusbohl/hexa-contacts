@@ -1,7 +1,11 @@
 export const path = {
-    ROOT: "./"
+    ROOT: "./",
+    DIST: "./dist/",
+    SRC: "./src/"
 };
 
 export const task = {
-    BUILD_TS: "build_ts"
+    BUILD_TS: "build_ts",
+    CLEAN_DIST: "clean:dist",
+    WATCH: "watch"
 };
