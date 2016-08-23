@@ -8,9 +8,9 @@
         "sourceMap": true
     },
     "exclude": [
-        "node_modules",
+        "build",
         "dist",
-        "dev",
+        "node_modules",
         "typings",
         ".git"
     ]
