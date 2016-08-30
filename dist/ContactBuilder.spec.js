@@ -4,9 +4,8 @@ describe("ContactBuilder", function () {
     describe("build", function () {
         it("returns a contact with id set", function () {
             var builder = new ContactBuilder_1.ContactBuilder();
-            builder.id(1);
-            var contact = builder.build();
-            expect(contact.id).toBe(1);
+            var contact = builder.id(1).build();
+            expect(contact.id()).toBe(1);
         });
     });
 });

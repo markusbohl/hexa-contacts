@@ -7,7 +7,7 @@ var ContactBuilder = (function () {
         return this;
     };
     ContactBuilder.prototype.build = function () {
-        return new Contact(null, null, null, null);
+        return new Contact(this._id, null, null, null);
     };
     return ContactBuilder;
 }());

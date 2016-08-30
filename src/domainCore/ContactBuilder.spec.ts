@@ -9,13 +9,12 @@ describe("ContactBuilder", () => {
         it("returns a contact with id set", () => {
             // Arrange
             let builder = new ContactBuilder();
-            builder.id(1);
 
             // Act
-            let contact = builder.build();
+            let contact = builder.id(1).build();
 
             // Assert
-            expect(contact.id).toBe(1);
+            expect(contact.id()).toBe(1);
         });
     });
 });

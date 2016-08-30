@@ -16,7 +16,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             {
-                pattern: "dist/**/*.js",
+                pattern: "src/**/*.ts",
                 included: true
             }
         ],
@@ -26,32 +26,21 @@ module.exports = function (config) {
         exclude: [
         ],
 
+        // preprocess matching files before serving them to the browser
         preprocessors: {
-            "dist/**/*.js": ["browserify"]
+            "src/**/*.ts": ["browserify"]
         },
 
-        // preprocess matching files before serving them to the browser
-//        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-//        preprocessors: {
-//            "src/**/*.ts": ["typescript"]
-//        },
-//
-//        typescriptPreprocessor: {
-//            // options passed to typescript compiler
-//            tsconfigPath: "./tsconfig.json",
-//            compilerOptions: {
-//                outDir: "dist"
-//            },
-//            // ignore all files that end with d.ts
-//            ignorePath: function(path) {
-//                return /\.d\.ts$/.test(path);
-//            },
-//            // transforming the filenames 
-//            transformPath: function(path) {
-//                return path.replace(/\.ts$/, ".js");
-//            }
-//        },
-//
+        // browserify configuration
+        // options: https://github.com/substack/node-browserify#browserifyfiles--opts
+        browserify: {
+            debug: true,
+            plugin: [
+                ["tsify"]
+            ]
+        },
+
+
         // test results reporter to use
         // possible values: "dots", "progress"
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter

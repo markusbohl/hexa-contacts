@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start"
   },
   "author": "",
   "license": "ISC",
@@ -18,13 +18,13 @@
     "jasmine-core": "^2.4.1",
     "karma": "^1.2.0",
     "karma-browserify": "^5.1.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-commonjs-plus": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-nicer-reporter": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-typescript-preprocessor": "^0.2.1",
     "require-dir": "^0.3.0",
+    "tsify": "^1.0.4",
+    "typescript": "^1.8.10",
     "watchify": "^3.7.0"
   }
 }

@@ -15,7 +15,7 @@ export class ContactBuilder {
     }
 
     build(): IContact {
-        return new Contact(null, null, null, null);
+        return new Contact(this._id, null, null, null);
     }
 }
 
