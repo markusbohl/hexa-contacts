@@ -14,8 +14,23 @@ export class ContactBuilder {
         return this;
     }
 
+    firstName(value: string): ContactBuilder {
+        this._firstName = value;
+        return this;
+    }
+
+    lastName(value: string): ContactBuilder {
+        this._lastName = value;
+        return this;
+    }
+
+    dateOfBirth(value: Date): ContactBuilder {
+        this._dateOfBirth = value;
+        return this;
+    }
+
     build(): IContact {
-        return new Contact(this._id, null, null, null);
+        return new Contact(this._id, this._firstName, this._lastName, this._dateOfBirth);
     }
 }
 
