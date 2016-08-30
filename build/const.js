@@ -7,5 +7,6 @@ export const path = {
 export const task = {
     BUILD_TS: "build_ts",
     CLEAN_DIST: "clean:dist",
-    WATCH: "watch"
+    WATCH: "watch",
+    TEST: "test"
 };

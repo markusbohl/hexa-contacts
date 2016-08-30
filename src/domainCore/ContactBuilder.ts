@@ -1,6 +1,6 @@
 "use strict";
 
-import { IContact } from './IContact';
+import { IContact } from "./IContact";
 
 export class ContactBuilder {
 
