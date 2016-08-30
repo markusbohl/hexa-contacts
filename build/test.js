@@ -8,5 +8,5 @@ gulp.task(task.TEST, (done) => {
     new Server({
         configFile: KARMA_CONFIG,
         singleRun: true
-    }, done).start();
+    }, function() {done();}).start();
 });
