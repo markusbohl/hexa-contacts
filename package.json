@@ -21,6 +21,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-nicer-reporter": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.1",
+    "karma-story-reporter": "^0.3.1",
     "karma-typescript-preprocessor": "^0.2.1",
     "require-dir": "^0.3.0",
     "tsify": "^1.0.4",

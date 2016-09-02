@@ -14,6 +14,7 @@ gulp.task(task.TEST, (done) => {
 gulp.task(task.TDD, (done) => {
     new Server({
         configFile: KARMA_CONFIG,
-        singleRun: false
+        singleRun: false,
+        autoWatch: true
     }, function() {done();}).start();
 });
