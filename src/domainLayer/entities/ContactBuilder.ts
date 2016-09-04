@@ -1,6 +1,6 @@
 "use strict";
 
-import { IContact } from "./IContact";
+import { Contact } from "./Contact";
 
 export class ContactBuilder {
 
@@ -29,38 +29,7 @@ export class ContactBuilder {
         return this;
     }
 
-    build(): IContact {
+    build(): Contact {
         return new Contact(this._id, this._firstName, this._lastName, this._dateOfBirth);
-    }
-}
-
-class Contact implements IContact {
-
-    private _id: number;
-    private _firstName: string;
-    private _lastName: string;
-    private _dateOfBirth: Date;
-
-    constructor(id: number, firstName: string, lastName: string, dateOfBirth: Date) {
-        this._id = id;
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._dateOfBirth = dateOfBirth;
-    }
-
-    id(): number {
-        return this._id;
-    }
-
-    firstName(): string {
-        return this._firstName;
-    }
-
-    lastName(): string {
-        return this._lastName;
-    }
-
-    dateOfBirth(): Date {
-        return this._dateOfBirth;
     }
 }

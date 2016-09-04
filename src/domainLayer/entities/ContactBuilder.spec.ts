@@ -5,7 +5,7 @@
 import { ContactBuilder } from "./ContactBuilder";
 
 describe("ContactBuilder", () => {
-    describe("build", () => {
+    describe("build()", () => {
         it("returns a contact with attributes set", () => {
             // Arrange
             let builder = new ContactBuilder();
@@ -20,10 +20,10 @@ describe("ContactBuilder", () => {
                 .build();
 
             // Assert
-            expect(contact.id()).toBe(1);
-            expect(contact.firstName()).toBe("John");
-            expect(contact.lastName()).toBe("Doe");
-            expect(contact.dateOfBirth()).toBe(BIRTHDAY);
+            expect(contact.id).toBe(1);
+            expect(contact.firstName).toBe("John");
+            expect(contact.lastName).toBe("Doe");
+            expect(contact.dateOfBirth).toBe(BIRTHDAY);
         });
     });
 });
