@@ -8,7 +8,7 @@ import { Contact } from '../../domainLayer/entities/Contact';
 
 export class CreateContactHandler implements Handler<CreateContactCommand> {
 
-    constructor(private contactBuilder: ContactBuilder, private contatactRepository: ContactRepository) {}
+    constructor(private contactBuilder: ContactBuilder, private contactRepository: ContactRepository) {}
 
     handle(command: CreateContactCommand): void {
         let contact:Contact = this.contactBuilder
@@ -17,6 +17,6 @@ export class CreateContactHandler implements Handler<CreateContactCommand> {
             .dateOfBirth(command.dateOfBirth)
             .build();
 
-        this.contatactRepository.persist(contact);
+        this.contactRepository.persist(contact);
     }
 }
