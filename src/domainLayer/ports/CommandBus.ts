@@ -5,5 +5,6 @@
  * The Handler is responsible for running the logic to fulfill the command.
  */
 export interface CommandBus {
+
     execute(command: any): void;
 }

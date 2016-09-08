@@ -1,10 +1,10 @@
 "use strict";
 var SimpleCommandBus = (function () {
-    function SimpleCommandBus(handlerProvider) {
-        this.handlerProvider = handlerProvider;
+    function SimpleCommandBus(handlerRegistry) {
+        this.handlerRegistry = handlerRegistry;
     }
     SimpleCommandBus.prototype.execute = function (command) {
-        var handler = this.handlerProvider.getHandler(command);
+        var handler = this.handlerRegistry.getHandler(command);
         handler.handle(command);
     };
     return SimpleCommandBus;

@@ -3,13 +3,13 @@
 "use strict";
 
 import { SimpleCommandBus } from './SimpleCommandBus';
-import { HandlerProvider } from '../ports/HandlerProvider';
+import { HandlerRegistry } from '../handlers/HandlerRegistry';
 import { Handler } from '../handlers/Handler';
 
 describe("SimpleCommandBus", () => {
 
     let commandBus: SimpleCommandBus;
-    let handlerProvider: HandlerProvider;
+    let handlerRegistry: HandlerRegistry;
     let command: Object;
     let handler: Handler<Object>;
 
@@ -18,18 +18,15 @@ describe("SimpleCommandBus", () => {
         handler = {
             handle: function(command: Object) {}
         };
-        handlerProvider = {
-            getHandler: function<T>(command: T):Handler<T> {
-                return handler;
-            }
-        };
-        commandBus = new SimpleCommandBus(handlerProvider);
+        handlerRegistry = new HandlerRegistry();
+        commandBus = new SimpleCommandBus(handlerRegistry);
     });
 
     describe("execute()", () => {
         it("handles given command with appropriate handler", () => {
             // Arrange
             spyOn(handler, "handle");
+            spyOn(handlerRegistry, "getHandler").and.returnValue(handler);
 
             // Act
             commandBus.execute(command);
@@ -40,7 +37,7 @@ describe("SimpleCommandBus", () => {
 
         it("throws exception if no appropriate handler is found for the given command", () => {
             // Arrange
-            spyOn(handlerProvider, "getHandler").and.throwError("No handler found for command.");
+            spyOn(handlerRegistry, "getHandler").and.throwError("No handler found for command.");
 
             // Act
             try {
