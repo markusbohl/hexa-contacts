@@ -4,12 +4,12 @@ import { Contact } from "./Contact";
 
 export class ContactBuilder {
 
-    private _id: number;
+    private _id: Number;
     private _firstName: string;
     private _lastName: string;
     private _dateOfBirth: Date;
 
-    id(value: number): ContactBuilder {
+    id(value: Number): ContactBuilder {
         this._id = value;
         return this;
     }

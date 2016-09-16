@@ -1,13 +1,13 @@
 "use strict";
 
 export class Identity {
-    private _id: number;
+    private _id: Number;
 
-    constructor(id: number) {
+    constructor(id: Number) {
         this._id = id;
     }
 
-    get id(): number {
+    get id(): Number {
         return this._id;
     }
 }

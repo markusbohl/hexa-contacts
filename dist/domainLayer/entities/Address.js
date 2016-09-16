@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Identity_1 = require('./Identity');
+var Identity_1 = require('../utils/Identity');
 var Address = (function (_super) {
     __extends(Address, _super);
     function Address(id, street, houseNumber, postCode, city, country) {
