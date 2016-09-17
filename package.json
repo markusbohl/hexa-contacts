@@ -28,5 +28,8 @@
     "tsify": "^1.0.4",
     "typescript": "^1.8.10",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "mongodb": "^2.2.10"
   }
 }
