@@ -6,14 +6,7 @@ export class HandlerRegistry {
 
     private registry = new Array();
 
-    register<T>(handler: Handler<T>, cmdType: { new (): T; }): void {
-        if (this.getHandler(cmdType)) {
-            throw new Error(`Handler for command already registered.`);
-        }
-        this.registry.push({ cmdType: cmdType, handler: handler });
-    }
-
-    getHandler<T>(cmdType: { new (): T; }): Handler<T> {
+    private findHandlerFor<T>(cmdType: { new (): T; }): Handler<T> {
         let handler: Handler<T> = null;
 
         this.registry.forEach(element => {
@@ -23,5 +16,23 @@ export class HandlerRegistry {
         });
 
         return handler;
+    }
+
+    register<T>(handler: Handler<T>, cmdType: { new (): T; }): void {
+        if (this.findHandlerFor(cmdType)) {
+            throw new Error("Handler for command already registered.");
+        }
+
+        this.registry.push({ cmdType: cmdType, handler: handler });
+    }
+
+    getHandler<T>(cmdType: { new (): T; }): Handler<T> {
+        let handler: Handler<T> = this.findHandlerFor(cmdType);
+
+        if (handler) {
+            return handler;
+        } else {
+            throw new Error("No handler registered for given command.");
+        }
     }
 }

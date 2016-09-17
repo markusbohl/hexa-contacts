@@ -47,12 +47,14 @@ describe("HandlerRegistry", () => {
     });
 
     describe("getHandler()", () => {
-        it("returns null if no handler is registered for the given command", () => {
+        it("throws exception if no handler is registered for the given command", () => {
             // Act
-            let result = registry.getHandler(CreateContactCommand);
-            
-            // Assert
-            expect(result).toBeNull();
+            try {
+                registry.getHandler(CreateContactCommand);
+            } catch (error) {
+                // Assert
+                expect(error.message).toBe("No handler registered for given command.");
+            }
         });
     });
 });
