@@ -1,0 +1,1 @@
+{"version":3,"sources":["domainLayer/entities/EmailList.ts"],"names":[],"mappings":"AAAA,YAAY,CAAC;;;;;;AAKb,kCAAkC,qBAAqB,CAAC,CAAA;AAExD;IAA+B,6BAAwB;IAEnD,mBAAY,EAAU,EAAE,GAAY,EAAE,eAAgC;QAClE,kBAAM,EAAE,EAAE,GAAG,EAAE,eAAe,CAAC,CAAC;IACpC,CAAC;IACL,gBAAC;AAAD,CALA,AAKC,CAL8B,qCAAiB,GAK/C;AALY,iBAAS,YAKrB,CAAA","file":"domainLayer/entities/EmailList.js","sourceRoot":"../src/"}

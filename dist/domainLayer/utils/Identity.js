@@ -13,3 +13,5 @@ var Identity = (function () {
     return Identity;
 }());
 exports.Identity = Identity;
+
+//# sourceMappingURL=Identity.js.map

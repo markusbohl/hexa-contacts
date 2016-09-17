@@ -37,3 +37,5 @@ var Contact = (function (_super) {
     return Contact;
 }(Identity_1.Identity));
 exports.Contact = Contact;
+
+//# sourceMappingURL=Contact.js.map

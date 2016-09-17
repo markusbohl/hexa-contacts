@@ -7,14 +7,30 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Identity_1 = require('../utils/Identity');
 var Address = (function (_super) {
     __extends(Address, _super);
-    function Address(id, street, houseNumber, postCode, city, country) {
+    function Address(id, ref, type, street, houseNumber, postCode, city, country) {
         _super.call(this, id);
+        this._ref = ref;
+        this._type = type;
         this._street = street;
         this._houseNumber = houseNumber;
         this._postCode = postCode;
         this._city = city;
         this._country = country;
     }
+    Object.defineProperty(Address.prototype, "ref", {
+        get: function () {
+            return this._ref;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Address.prototype, "type", {
+        get: function () {
+            return this._type;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Address.prototype, "street", {
         get: function () {
             return this._street;
@@ -53,3 +69,5 @@ var Address = (function (_super) {
     return Address;
 }(Identity_1.Identity));
 exports.Address = Address;
+
+//# sourceMappingURL=Address.js.map

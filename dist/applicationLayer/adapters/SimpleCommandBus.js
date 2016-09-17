@@ -10,3 +10,5 @@ var SimpleCommandBus = (function () {
     return SimpleCommandBus;
 }());
 exports.SimpleCommandBus = SimpleCommandBus;
+
+//# sourceMappingURL=SimpleCommandBus.js.map
