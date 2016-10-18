@@ -1,24 +1,24 @@
 "use strict";
 
-import { Identity } from '../utils/Identity';
-import { PhoneType } from './PhoneType';
+import { Identity } from "./Identity";
+import { PhoneType } from "./PhoneType";
 
 export class PhoneNumber extends Identity {
 
     private _type: PhoneType;
-    private _number: string;
+    private _phoneNumber: string;
 
-    constructor(id: Number, type: PhoneType, number: string) {
+    constructor(id: string, type: PhoneType, phoneNumber: string) {
         super(id);
         this._type = type;
-        this._number = number;
+        this._phoneNumber = phoneNumber;
     }
 
     get type(): PhoneType {
         return this._type;
     }
 
-    get number(): string {
-        return this._number;
+    get phoneNumber(): string {
+        return this._phoneNumber;
     }
 }

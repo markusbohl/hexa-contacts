@@ -1,16 +1,20 @@
 "use strict";
 
-import { ImmutableGenericList } from '../utils/ImmutableGenericList';
-import { EqualityChecker } from '../ports/EqualityChecker';
+import { ImmutableGenericList } from "../utils/ImmutableGenericList";
+import { EqualityChecker } from "../ports/EqualityChecker";
 
 describe("GenericList", () => {
-    let equalityChecker: EqualityChecker = {
-        isEqual(value, other): boolean { return true }
-    }
+    let equalityChecker: EqualityChecker;
+    let immutableList: ImmutableGenericList<string>;
+
+    beforeEach(() => {
+        equalityChecker = {
+            isEqual(value, other): boolean { return true; }
+        };
+        immutableList = new ImmutableGenericList<string>(equalityChecker);
+    });
 
     describe("length", () => {
-        let immutableList: ImmutableGenericList<string> = new ImmutableGenericList<string>(equalityChecker);
-
         it("returns 0 if list is empty", () => {
             expect(immutableList.length).toBe(0);
         });
@@ -23,8 +27,6 @@ describe("GenericList", () => {
     });
 
     describe("isEmpty()", () => {
-        let immutableList: ImmutableGenericList<string> = new ImmutableGenericList<string>(equalityChecker);
-
         it("returns true if list is empty", () => {
             expect(immutableList.isEmpty()).toBeTruthy();
         });
@@ -37,8 +39,6 @@ describe("GenericList", () => {
     });
 
     describe("remove()", () => {
-        let immutableList: ImmutableGenericList<string> = new ImmutableGenericList<string>(equalityChecker);
-
         it("remove nothing if given value is not present in list", () => {
             // Arrange
             spyOn(equalityChecker, "isEqual").and.returnValue(false);
@@ -65,8 +65,6 @@ describe("GenericList", () => {
     });
 
     describe("values()", () => {
-        let immutableList: ImmutableGenericList<string> = new ImmutableGenericList<string>(equalityChecker);
-
         it("returns an empty array if list is empty", () => {
             expect(immutableList.values().length).toBe(0);
         });

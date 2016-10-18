@@ -1,11 +1,11 @@
 "use strict";
 
-import { Contact } from './Contact';
-import { EqualityChecker } from '../ports/EqualityChecker';
-import { ImmutableGenericList } from '../utils/ImmutableGenericList';
+import { Contact } from "./Contact";
+import { EqualityChecker } from "../ports/EqualityChecker";
+import { ImmutableGenericList } from "../utils/ImmutableGenericList";
 
 export abstract class ContactAspectList<T> extends ImmutableGenericList<T> {
-    
+
     private _id: Number;
     private _ref: Contact;
 

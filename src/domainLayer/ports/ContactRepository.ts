@@ -1,6 +1,6 @@
 "use strict";
 
-import { Contact } from '../entities/Contact';
+import { Contact } from "../entities/Contact";
 
 export interface ContactRepository {
 

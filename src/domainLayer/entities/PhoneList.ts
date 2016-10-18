@@ -1,9 +1,9 @@
 "use strict";
 
-import { Contact } from './Contact';
-import { PhoneNumber } from './PhoneNumber';
-import { EqualityChecker } from '../ports/EqualityChecker';
-import { ContactAspectList } from './ContactAspectList';
+import { Contact } from "./Contact";
+import { PhoneNumber } from "./PhoneNumber";
+import { EqualityChecker } from "../ports/EqualityChecker";
+import { ContactAspectList } from "./ContactAspectList";
 
 export class PhoneList extends ContactAspectList<PhoneNumber> {
 

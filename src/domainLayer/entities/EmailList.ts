@@ -1,9 +1,9 @@
 "use strict";
 
-import { Contact } from './Contact';
-import { Email } from './Email';
-import { EqualityChecker } from '../ports/EqualityChecker';
-import { ContactAspectList } from './ContactAspectList';
+import { Contact } from "./Contact";
+import { Email } from "./Email";
+import { EqualityChecker } from "../ports/EqualityChecker";
+import { ContactAspectList } from "./ContactAspectList";
 
 export class EmailList extends ContactAspectList<Email> {
 

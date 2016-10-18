@@ -1,6 +1,8 @@
+/// <reference path="../../../typings/globals/jasmine/index.d.ts" />
+
 "use strict";
 
-import { EqualityChecker } from '../ports/EqualityChecker';
+import { EqualityChecker } from "../ports/EqualityChecker";
 
 export class ImmutableGenericList<T> {
 

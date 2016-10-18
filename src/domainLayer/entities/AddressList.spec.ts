@@ -1,11 +1,11 @@
 "use strict";
 
-import { Contact } from './Contact';
-import { ContactBuilder } from './ContactBuilder';
-import { AddressList } from './AddressList';
+import { Contact } from "./Contact";
+import { ContactBuilder } from "./ContactBuilder";
+import { AddressList } from "./AddressList";
 
 describe("AddressList as ContactAspectList", () => {
-    
+
     it("sets id via constructor", () => {
         let addressList = new AddressList(1, null, null);
 

@@ -13,14 +13,14 @@ describe("ContactBuilder", () => {
 
             // Act
             let contact = builder
-                .id(1)
+                .id("1")
                 .firstName("John")
                 .lastName("Doe")
                 .dateOfBirth(BIRTHDAY)
                 .build();
 
             // Assert
-            expect(contact.id).toBe(1);
+            expect(contact.id).toBe("1");
             expect(contact.firstName).toBe("John");
             expect(contact.lastName).toBe("Doe");
             expect(contact.dateOfBirth).toBe(BIRTHDAY);

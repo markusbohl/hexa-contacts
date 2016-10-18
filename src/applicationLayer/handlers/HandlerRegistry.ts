@@ -1,6 +1,6 @@
 "use strict";
 
-import { Handler } from './Handler';
+import { Handler } from "./Handler";
 
 export class HandlerRegistry {
 
@@ -10,7 +10,7 @@ export class HandlerRegistry {
         let handler: Handler<T> = null;
 
         this.registry.forEach(element => {
-            if (element.cmdType.prototype == cmdType.prototype) {
+            if (element.cmdType.prototype === cmdType.prototype) {
                 handler = element.handler;
             }
         });

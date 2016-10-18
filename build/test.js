@@ -1,20 +1,19 @@
 import gulp from "gulp";
-import { path, task } from "./const";
-import {Server} from "karma";
+import {exec} from "child_process";
+import {path, task} from "./const";
 
-const KARMA_CONFIG = path.ROOT + "/karma.conf.js";
+const TS = path.SRC + "**/*.ts";
 
 gulp.task(task.TEST, (done) => {
-    new Server({
-        configFile: KARMA_CONFIG,
-        singleRun: true
-    }, function() {done();}).start();
+    exec("jasmine-ts 'src/**/*.spec.ts'", (err, stdout, stderr) => {
+        console.log(stdout);
+        console.log(stderr);
+        done(err);
+    });
 });
 
-gulp.task(task.TDD, (done) => {
-    new Server({
-        configFile: KARMA_CONFIG,
-        singleRun: false,
-        autoWatch: true
-    }, function() {done();}).start();
+gulp.task(task.TDD, () => {
+    let _watchables = [TS];
+
+    return gulp.watch(_watchables, [task.TEST]);
 });

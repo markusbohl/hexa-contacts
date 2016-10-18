@@ -2,11 +2,11 @@
 
 "use strict";
 
-import { Handler } from './Handler';
-import { CreateContactHandler } from './CreateContactHandler';
-import { ContactRepository } from '../../domainLayer/ports/ContactRepository';
-import { CreateContactCommand } from '../../domainLayer/useCases/CreateContactCommand';
-import { ContactBuilder } from '../../domainLayer/entities/ContactBuilder';
+import { Handler } from "./Handler";
+import { CreateContactHandler } from "./CreateContactHandler";
+import { ContactRepository } from "../../domainLayer/ports/ContactRepository";
+import { CreateContactCommand } from "../../domainLayer/useCases/CreateContactCommand";
+import { ContactBuilder } from "../../domainLayer/entities/ContactBuilder";
 
 describe("CreateContactHandler", () => {
     describe("handle()", () => {
@@ -23,7 +23,7 @@ describe("CreateContactHandler", () => {
 
         it("will persist new contact with repository", () => {
             // Arrange
-            command = new CreateContactCommand()
+            command = new CreateContactCommand();
             command.firstName = "Bosco Albert";
             command.lastName = "Baracus";
             command.dateOfBirth = new Date(1952, 4, 21);

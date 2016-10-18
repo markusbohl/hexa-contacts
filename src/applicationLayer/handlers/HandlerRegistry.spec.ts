@@ -2,9 +2,9 @@
 
 "use strict";
 
-import { HandlerRegistry } from './HandlerRegistry';
-import { Handler } from './Handler';
-import { CreateContactCommand } from '../../domainLayer/useCases/CreateContactCommand';
+import { HandlerRegistry } from "./HandlerRegistry";
+import { Handler } from "./Handler";
+import { CreateContactCommand } from "../../domainLayer/useCases/CreateContactCommand";
 
 describe("HandlerRegistry", () => {
 
@@ -13,7 +13,7 @@ describe("HandlerRegistry", () => {
         handle(command: CreateContactCommand): void {
             // do nothing
         }
-    }
+    };
 
     beforeEach(() => {
         registry = new HandlerRegistry();

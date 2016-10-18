@@ -1,8 +1,8 @@
 "use strict";
 
-import { Identity } from '../utils/Identity';
-import { Contact } from './Contact';
-import { AddressType } from './AddressType';
+import { Identity } from "./Identity";
+import { Contact } from "./Contact";
+import { AddressType } from "./AddressType";
 
 export class Address extends Identity {
 
@@ -14,7 +14,7 @@ export class Address extends Identity {
     private _city: string;
     private _country: string;
 
-    constructor(id: Number, ref: Contact, type: AddressType, street: string, houseNumber: string, postCode: string, city: string, country: string) {
+    constructor(id: string, ref: Contact, type: AddressType, street: string, houseNumber: string, postCode: string, city: string, country: string) {
         super(id);
         this._ref = ref;
         this._type = type;

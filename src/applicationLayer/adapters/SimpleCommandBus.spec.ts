@@ -2,9 +2,9 @@
 
 "use strict";
 
-import { SimpleCommandBus } from './SimpleCommandBus';
-import { HandlerRegistry } from '../handlers/HandlerRegistry';
-import { Handler } from '../handlers/Handler';
+import { SimpleCommandBus } from "./SimpleCommandBus";
+import { HandlerRegistry } from "../handlers/HandlerRegistry";
+import { Handler } from "../handlers/Handler";
 
 describe("SimpleCommandBus", () => {
 

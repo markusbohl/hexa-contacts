@@ -1,6 +1,6 @@
 "use strict";
 
-import { Identity } from '../utils/Identity';
+import { Identity } from "./Identity";
 
 export class Contact extends Identity {
 
@@ -8,7 +8,7 @@ export class Contact extends Identity {
     private _lastName: string;
     private _dateOfBirth: Date;
 
-    constructor(id: Number, firstName: string, lastName: string, dateOfBirth: Date) {
+    constructor(id: string, firstName: string, lastName: string, dateOfBirth: Date) {
         super(id);
         this._firstName = firstName;
         this._lastName = lastName;
