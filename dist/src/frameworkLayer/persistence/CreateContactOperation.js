@@ -14,10 +14,11 @@ class CreateContactOperation {
         });
     }
     create(contact) {
+        let insert = this.insert;
         mongodb_1.MongoClient.connect(this.mongoDbUrl, function (err, db) {
             assert.equal(null, err);
             console.log("Connected successfully to server");
-            this.insert(contact, db, function () {
+            insert(contact, db, function () {
                 db.close();
             });
         });

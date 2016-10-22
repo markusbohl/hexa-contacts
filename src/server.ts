@@ -2,16 +2,17 @@
 
 "use strict";
 
-import { MongoClient } from "mongodb";
 import { credentials } from "../config/mLab/credentials";
+import {CreateContactOperation} from "./frameworkLayer/persistence/CreateContactOperation";
+import {MongoContactRepository} from "./frameworkLayer/persistence/MongoContactRepository";
+import {ContactBuilder} from "./domainLayer/entities/ContactBuilder";
 
 // Connection URL
 const url = `mongodb://${credentials.dbuser}:${credentials.dbpassword}@ds035006.mlab.com:35006/hexa-contacts`;
 
-// Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
-  console.log("Connected successfully to server");
+let createContactOperation = new CreateContactOperation(url);
+let contactRepository = new MongoContactRepository(createContactOperation);
 
-  db.close();
-});
+let contact = new ContactBuilder().id("12345").firstName("Franz").lastName("Mümpfel").build();
 
+contactRepository.persist(contact);

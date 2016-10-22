@@ -22,11 +22,12 @@ export class CreateContactOperation {
     }
 
     create(contact: Contact) {
+        let insert = this.insert;
         MongoClient.connect(this.mongoDbUrl, function (err: any, db: any) {
             assert.equal(null, err);
             console.log("Connected successfully to server");
 
-            this.insert(contact, db, function () {
+            insert(contact, db, function () {
                 db.close();
             });
         });
