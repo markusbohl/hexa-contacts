@@ -1,5 +1,5 @@
 "use strict";
-const credentials_1 = require("../config/mLab/credentials");
+const credentials_1 = require("../config/mLab/CREDENTIALS");
 const CreateContactOperation_1 = require("./frameworkLayer/persistence/CreateContactOperation");
 const MongoContactRepository_1 = require("./frameworkLayer/persistence/MongoContactRepository");
 const ContactBuilder_1 = require("./domainLayer/entities/ContactBuilder");
