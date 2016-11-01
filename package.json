@@ -1,7 +1,7 @@
 {
   "name": "contacts",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,9 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "@types/restify": "^2.0.34",
     "mongodb": "^2.2.10",
+    "restify": "^4.1.1",
     "typescript": "^2.0.3"
   },
   "engines": {
