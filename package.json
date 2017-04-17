@@ -6,7 +6,22 @@
   "author": "Markus Bohl <markus.bohl@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jasmine": "2.5.47",
+    "@types/uuid": "2.0.29",
+    "chokidar-cli": "1.2.0",
+    "jasmine": "2.5.3",
+    "jasmine-console-reporter": "1.2.7",
+    "jasmine-ts": "0.1.0",
+    "ts-mockito": "1.2.0",
     "tslint": "5.1.0",
     "typescript": "2.2.2"
+  },
+  "scripts": {
+    "test": "jasmine-ts 'src/**/*.spec.ts'",
+    "tdd": "chokidar src/**/*.ts --initial -d 1000 -c 'npm test'"
+  },
+  "dependencies": {
+    "fluent-ts-validator": "1.0.0",
+    "uuid": "3.0.1"
   }
 }
