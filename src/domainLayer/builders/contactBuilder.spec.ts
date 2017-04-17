@@ -7,12 +7,10 @@ import {IllegalInstanceError} from "../errors/illegalInstanceError";
 
 describe('ContactBuilder', () => {
     let contactBuilder: ContactBuilder;
-    let mockedContactValidator: ContactValidator;
     const birthday = new Date(2000, 10, 23);
 
     beforeEach(() => {
-        mockedContactValidator = mock(ContactValidator);
-        contactBuilder = new ContactBuilder(instance(mockedContactValidator))
+        contactBuilder = new ContactBuilder(new ContactValidator())
             .id('123e4567-e89b-12d3-a456-426655440000')
             .firstName('firstname')
             .lastName('lastname')
@@ -21,12 +19,6 @@ describe('ContactBuilder', () => {
     });
 
     describe('build() - successful validation -', () => {
-        beforeEach(() => {
-            const mockedValidationResult = mock(ValidationResult);
-            when(mockedValidationResult.isValid()).thenReturn(true);
-            when(mockedContactValidator.validate(anything())).thenReturn(instance(mockedValidationResult));
-        });
-
         it('should return contact with previously set id', () => {
             let contact = contactBuilder.build();
 
@@ -63,25 +55,29 @@ describe('ContactBuilder', () => {
 
             expect(contact.dateOfBirth).toEqual(birthday);
         });
-
-        it('should validate created contact prior to returning', () => {
-            let contact = contactBuilder.build();
-
-            verify(mockedContactValidator.validate(contact)).called();
-        });
     });
 
     describe('build() - unsuccessful validation -', () => {
         it('should throw exception if contact is in invalid state', () => {
-            const mockedValidationResult = mock(ValidationResult);
-            when(mockedValidationResult.isValid()).thenReturn(false);
-            when(mockedContactValidator.validate(anything())).thenReturn(instance(mockedValidationResult));
+            contactBuilder.dateOfBirth(new Date(2100, 0, 1)).email('not_an_email');
 
             try {
                 contactBuilder.build();
                 fail();
             } catch (e) {
                 expect(e instanceof IllegalInstanceError).toBe(true);
+            }
+        });
+
+        it('should throw exception with appropriate error message', () => {
+            contactBuilder.dateOfBirth(new Date(2100, 0, 1)).email('not_an_email');
+
+            try {
+                contactBuilder.build();
+                fail();
+            } catch (e) {
+                expect(e.message).toContain('dateOfBirth is invalid');
+                expect(e.message).toContain('email is invalid');
             }
         });
     });

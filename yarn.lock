@@ -352,9 +352,9 @@ findup-sync@~0.3.0:
   dependencies:
     glob "~5.0.0"
 
-fluent-ts-validator@1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/fluent-ts-validator/-/fluent-ts-validator-1.0.0-rc.5.tgz#80e0cb19467b9ca737ebe726ceb2ae6beb3bef5a"
+fluent-ts-validator@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fluent-ts-validator/-/fluent-ts-validator-1.0.0.tgz#0873ad61f9fbfd09054393a90350090257ab3ff2"
   dependencies:
     validator "7.0.0"
 

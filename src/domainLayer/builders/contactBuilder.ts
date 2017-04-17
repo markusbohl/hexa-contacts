@@ -48,10 +48,12 @@ export class ContactBuilder {
 
         const result = this.contactValidator.validate(contact);
 
-        if (result.isValid()) {
-            return contact;
+        if (result.isInvalid()) {
+            const message = result.getFailures().map(f => f.message).join(', ');
+
+            throw new IllegalInstanceError(message);
         } else {
-            throw new IllegalInstanceError();
+            return contact;
         }
     }
 }
