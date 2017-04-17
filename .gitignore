@@ -91,7 +91,7 @@ typings/
 
 
 ### WebStorm ###
-.idea
+.idea/
 *.iws
 .idea_modules/
 
