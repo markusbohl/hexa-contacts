@@ -1,10 +1,10 @@
-import {CreateContactUseCase} from "../../../../src/applicationLayer/createContact/createContactUseCase";
-import {ContactRepository} from "../../../../src/applicationLayer/ports/contactRepository";
-import {Contact} from "../../../../src/domainLayer/entities/contact";
+import {CreateContactUseCase} from "./createContactUseCase";
+import {ContactRepository} from "../ports/contactRepository";
+import {Contact} from "../../domainLayer/entities/contact";
 import {anything, instance, mock, verify, when} from "ts-mockito";
-import {CreateContactData} from "../../../../src/applicationLayer/createContact/createContactData";
-import {ContactBuilder} from "../../../../src/domainLayer/builders/contactBuilder";
-import {IllegalInstanceError} from "../../../../src/domainLayer/errors/illegalInstanceError";
+import {CreateContactData} from "./createContactData";
+import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
+import {IllegalInstanceError} from "../../domainLayer/errors/illegalInstanceError";
 
 describe('CreateContactUseCase', () => {
     let mockedContactBuilder: ContactBuilder;
