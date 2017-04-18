@@ -17,8 +17,8 @@
     "typescript": "2.2.2"
   },
   "scripts": {
-    "test": "jasmine-ts 'src/**/*.spec.ts'",
-    "tdd": "chokidar src/**/*.ts --initial -d 1000 -c 'npm test'"
+    "test": "jasmine-ts 'spec/**/*.spec.ts'",
+    "tdd": "chokidar src/**/*.ts spec/**/*.ts --initial -d 1000 -c 'npm test'"
   },
   "dependencies": {
     "fluent-ts-validator": "1.0.0",

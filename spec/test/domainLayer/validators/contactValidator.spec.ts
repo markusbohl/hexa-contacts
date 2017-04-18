@@ -1,5 +1,5 @@
-import {ContactValidator} from "./contactValidator";
-import {Contact} from "../entities/contact";
+import {ContactValidator} from "../../../../src/domainLayer/validators/contactValidator";
+import {Contact} from "../../../../src/domainLayer/entities/contact";
 
 describe('ContactValidator', () => {
     let validator: ContactValidator;

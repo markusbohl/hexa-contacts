@@ -1,9 +1,6 @@
-import {ContactBuilder} from "./contactBuilder";
-import {Contact} from "../entities/contact";
-import {ContactValidator} from "../validators/contactValidator";
-import {anything, instance, mock, verify, when} from "ts-mockito";
-import {ValidationResult} from "fluent-ts-validator";
-import {IllegalInstanceError} from "../errors/illegalInstanceError";
+import {ContactBuilder} from "../../../../src/domainLayer/builders/contactBuilder";
+import {ContactValidator} from "../../../../src/domainLayer/validators/contactValidator";
+import {IllegalInstanceError} from "../../../../src/domainLayer/errors/illegalInstanceError";
 
 describe('ContactBuilder', () => {
     let contactBuilder: ContactBuilder;
