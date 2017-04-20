@@ -1,8 +1,11 @@
+import "reflect-metadata";
 import * as uuid from "uuid";
 import {Contact} from "../entities/contact";
 import {ContactValidator} from "../validators/contactValidator";
 import {IllegalInstanceError} from "../errors/illegalInstanceError";
+import {injectable} from "inversify";
 
+@injectable()
 export class ContactBuilder {
     private _id: string;
     private _firstName: string;

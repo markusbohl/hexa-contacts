@@ -1,3 +1,4 @@
+import 'jasmine';
 import {CreateContactUseCase} from "./createContactUseCase";
 import {ContactRepository} from "../ports/contactRepository";
 import {Contact} from "../../domainLayer/entities/contact";

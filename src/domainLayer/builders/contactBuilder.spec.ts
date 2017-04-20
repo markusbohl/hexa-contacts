@@ -1,8 +1,6 @@
+import "jasmine";
 import {ContactBuilder} from "./contactBuilder";
-import {Contact} from "../entities/contact";
 import {ContactValidator} from "../validators/contactValidator";
-import {anything, instance, mock, verify, when} from "ts-mockito";
-import {ValidationResult} from "fluent-ts-validator";
 import {IllegalInstanceError} from "../errors/illegalInstanceError";
 
 describe('ContactBuilder', () => {

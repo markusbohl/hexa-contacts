@@ -21,7 +21,12 @@
     "tdd": "chokidar src/**/*.ts --initial -d 1000 -c 'npm test'"
   },
   "dependencies": {
+    "@types/mongodb": "^2.1.43",
     "fluent-ts-validator": "1.0.0",
+    "inversify": "^3.3.0",
+    "inversify-restify-utils": "^3.2.0",
+    "mongodb": "^2.2.26",
+    "reflect-metadata": "^0.1.10",
     "uuid": "3.0.1"
   }
 }

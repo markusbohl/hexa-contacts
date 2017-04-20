@@ -1,3 +1,4 @@
+import "jasmine";
 import {ContactValidator} from "./contactValidator";
 import {Contact} from "../entities/contact";
 

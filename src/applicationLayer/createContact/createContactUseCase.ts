@@ -2,7 +2,9 @@ import {ContactRepository} from "../ports/contactRepository";
 import {CreateContactData} from "./createContactData";
 import {Contact} from "../../domainLayer/entities/contact";
 import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
+import {injectable} from "inversify";
 
+@injectable()
 export class CreateContactUseCase {
 
     constructor(private contactBuilder: ContactBuilder, private contactRepository: ContactRepository) {
