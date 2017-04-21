@@ -1,6 +1,8 @@
 import {AbstractValidator} from "fluent-ts-validator";
 import {Contact} from "../entities/contact";
+import {injectable} from "inversify";
 
+@injectable()
 export class ContactValidator extends AbstractValidator<Contact> {
 
     constructor() {

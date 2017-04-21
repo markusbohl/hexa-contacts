@@ -13,6 +13,13 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitAny": false,
-    "sourceMap": false
-  }
+    "sourceMap": false,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src"
+  ]
 }

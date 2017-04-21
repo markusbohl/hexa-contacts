@@ -359,7 +359,7 @@ dtrace-provider@^0.6.0:
   dependencies:
     nan "^2.0.8"
 
-dtrace-provider@~0.8:
+dtrace-provider@^0.8.1, dtrace-provider@~0.8:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/dtrace-provider/-/dtrace-provider-0.8.1.tgz#cd4d174a233bea1bcf4a1fbfa5798f44f48cda9f"
   dependencies:
@@ -638,6 +638,10 @@ http-signature@~1.1.0:
     assert-plus "^0.2.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+http-status-codes@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/http-status-codes/-/http-status-codes-1.1.6.tgz#7a75d2b94d35a93183f39a0c8a6eb8963c20e50d"
 
 inflight@^1.0.4:
   version "1.0.6"
