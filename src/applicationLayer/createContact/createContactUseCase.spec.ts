@@ -3,30 +3,27 @@ import {CreateContactUseCase} from "./createContactUseCase";
 import {ContactRepository} from "../ports/contactRepository";
 import {Contact} from "../../domainLayer/entities/contact";
 import {anything, instance, mock, verify, when} from "ts-mockito";
-import {CreateContactData} from "./createContactData";
+import {NewContactData} from "../../frameworkLayer/restModels/newContactData";
 import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
 import {IllegalStateError} from "../../domainLayer/errors/illegalStateError";
+import {ContactAdapter} from "../ports/contactAdapter";
 
 describe('CreateContactUseCase', () => {
-    let mockedContactBuilder: ContactBuilder;
     let mockedRepository: ContactRepository;
-    let useCase: CreateContactUseCase;
+    let mockedContactAdapter: ContactAdapter<NewContactData>;
+    let useCase: CreateContactUseCase<NewContactData>;
 
     beforeEach(() => {
         mockedRepository = mock(TestContactRepository);
-        mockedContactBuilder = mock(ContactBuilder);
-        when(mockedContactBuilder.firstName(anything())).thenReturn(instance(mockedContactBuilder));
-        when(mockedContactBuilder.lastName(anything())).thenReturn(instance(mockedContactBuilder));
-        when(mockedContactBuilder.email(anything())).thenReturn(instance(mockedContactBuilder));
-        when(mockedContactBuilder.dateOfBirth(anything())).thenReturn(instance(mockedContactBuilder));
-        useCase = new CreateContactUseCase(instance(mockedContactBuilder), instance(mockedRepository));
+        mockedContactAdapter = mock(TestContactAdapter);
+        useCase = new CreateContactUseCase(instance(mockedContactAdapter), instance(mockedRepository));
     });
 
     describe('createContact()', () => {
         it('should reject the returned promise if contact-builder throws an error', async (done) => {
-            const contactData = new CreateContactData();
+            const contactData = new NewContactData();
             const error = new IllegalStateError();
-            when(mockedContactBuilder.build()).throwsError(error);
+            when(mockedContactAdapter.createContactFrom(contactData)).throwsError(error);
 
             try {
                 await useCase.createContact(contactData);
@@ -37,9 +34,9 @@ describe('CreateContactUseCase', () => {
         });
 
         it('should not invoke the contact repository if contact-builder throws an error', (done) => {
-            const contactData = new CreateContactData();
+            const contactData = new NewContactData();
             const error = new IllegalStateError();
-            when(mockedContactBuilder.build()).throwsError(error);
+            when(mockedContactAdapter.createContactFrom(contactData)).throwsError(error);
 
             const promise: Promise<Contact> = useCase.createContact(contactData);
 
@@ -50,32 +47,13 @@ describe('CreateContactUseCase', () => {
         });
 
         it('should invoke ContactRepository with newly created contact', (done) => {
-            const contactData = new CreateContactData();
+            const contactData = new NewContactData();
             const contact = new Contact('1');
-            when(mockedContactBuilder.build()).thenReturn(contact);
+            when(mockedContactAdapter.createContactFrom(contactData)).thenReturn(contact);
             when(mockedRepository.add(contact)).thenReturn(Promise.resolve());
 
             useCase.createContact(contactData).then(c => {
                 expect(c).toEqual(contact);
-                done();
-            });
-        });
-
-        it('should build contact with every property of contact data', (done) => {
-            const contactData = new CreateContactData();
-            contactData.firstName = 'firstName';
-            contactData.lastName = 'lastName';
-            contactData.email = 'foo@bar.com';
-            contactData.dateOfBirth = '2000-01-01';
-            const contact = new Contact('1');
-            when(mockedContactBuilder.build()).thenReturn(contact);
-            when(mockedRepository.add(contact)).thenReturn(Promise.resolve());
-
-            useCase.createContact(contactData).then(contact => {
-                verify(mockedContactBuilder.firstName(contactData.firstName)).called();
-                verify(mockedContactBuilder.lastName(contactData.lastName)).called();
-                verify(mockedContactBuilder.email(contactData.email)).called();
-                // verify(mockedContactBuilder.dateOfBirth(contactData.dateOfBirth)).called();
                 done();
             });
         });
@@ -93,5 +71,12 @@ class TestContactRepository implements ContactRepository {
 
     getAll(): Promise<Contact[]> {
         return null;
+    }
+}
+
+class TestContactAdapter extends ContactAdapter<NewContactData> {
+
+    createContactFrom(input: NewContactData): Contact {
+        throw new Error('Method not implemented.');
     }
 }

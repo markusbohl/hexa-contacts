@@ -1,4 +1,4 @@
-export class CreateContactData {
+export class NewContactData {
     firstName: string;
     lastName: string;
     email: string;
