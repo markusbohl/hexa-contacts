@@ -15,9 +15,9 @@ export class MongoDbContactRepository implements ContactRepository {
                 .then(db => {
                     db.collection('contacts').insertOne(contact)
                         .then(() => resolve())
-                        .catch(reason => console.log(reason) && reject(reason));
+                        .catch(reason => reject(reason));
                 })
-                .catch(reason => console.log(reason) && reject(reason));
+                .catch(reason => reject(reason));
         });
     }
 

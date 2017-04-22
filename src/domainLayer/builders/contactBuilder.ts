@@ -2,7 +2,7 @@ import "reflect-metadata";
 import * as uuid from "uuid";
 import {Contact} from "../entities/contact";
 import {ContactValidator} from "../validators/contactValidator";
-import {IllegalInstanceError} from "../errors/illegalInstanceError";
+import {IllegalStateError} from "../errors/illegalStateError";
 import {injectable} from "inversify";
 
 @injectable()
@@ -42,8 +42,7 @@ export class ContactBuilder {
     }
 
     build(): Readonly<Contact> {
-        const contact = new Contact();
-        contact.id = this._id || uuid.v4();
+        const contact = new Contact(this._id || uuid.v4());
         contact.firstName = this._firstName;
         contact.lastName = this._lastName;
         contact.email = this._email;
@@ -54,7 +53,7 @@ export class ContactBuilder {
         if (result.isInvalid()) {
             const message = result.getFailures().map(f => f.message).join(', ');
 
-            throw new IllegalInstanceError(message);
+            throw new IllegalStateError(message);
         } else {
             return contact;
         }

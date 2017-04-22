@@ -22,8 +22,6 @@ container.bind<CreateContactUseCase>(CreateContactUseCase).to(CreateContactUseCa
 container.bind<ContactRepository>('ContactRepository').to(MongoDbContactRepository);
 container.bind<MongoDbProvider>('MongoDb').toProvider<Db>((context) => {
     return () => {
-        const url = `mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOSTNAME}:${process.env.MONGO_DB_PORT}/${process.env.MONGO_DB_NAME}`;
-        console.log(url);
-        return MongoClient.connect(url);
+        return MongoClient.connect(`mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOSTNAME}:${process.env.MONGO_DB_PORT}/${process.env.MONGO_DB_NAME}`);
     }
 });

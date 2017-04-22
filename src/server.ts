@@ -6,4 +6,4 @@ const port = process.env.PORT | 3000;
 const server = new InversifyRestifyServer(container);
 server.setConfig(app => app.use(restify.bodyParser()))
     .build()
-    .listen(port, 'localhost', () => `server has started and is listening on port ${port}`);
+    .listen(port, () => console.log(`server has started and is listening on port ${port}`));

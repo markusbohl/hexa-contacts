@@ -1,7 +1,7 @@
 import "jasmine";
 import {ContactBuilder} from "./contactBuilder";
 import {ContactValidator} from "../validators/contactValidator";
-import {IllegalInstanceError} from "../errors/illegalInstanceError";
+import {IllegalStateError} from "../errors/illegalStateError";
 
 describe('ContactBuilder', () => {
     let contactBuilder: ContactBuilder;
@@ -63,7 +63,7 @@ describe('ContactBuilder', () => {
                 contactBuilder.build();
                 fail();
             } catch (e) {
-                expect(e instanceof IllegalInstanceError).toBe(true);
+                expect(e instanceof IllegalStateError).toBe(true);
             }
         });
 

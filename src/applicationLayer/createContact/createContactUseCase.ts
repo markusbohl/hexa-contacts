@@ -14,10 +14,8 @@ export class CreateContactUseCase {
         return new Promise((resolve, reject) => {
             try {
                 const contact = this.createContactFrom(contactData);
-                console.log(contact);
                 this.contactRepository.add(contact).then(() => resolve(contact), (reason => reject(reason)));
             } catch (e) {
-                console.log(e);
                 reject(e);
             }
         });
@@ -28,7 +26,7 @@ export class CreateContactUseCase {
             .firstName(contactData.firstName)
             .lastName(contactData.lastName)
             .email(contactData.email)
-            .dateOfBirth(contactData.dateOfBirth)
+            // .dateOfBirth(contactData.dateOfBirth)
             .build();
     }
 }
