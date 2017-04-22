@@ -1,23 +1,24 @@
-import "reflect-metadata";
-import {Container, decorate, injectable} from "inversify";
-import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
-import {ContactValidator} from "../../domainLayer/validators/contactValidator";
-import {ContactRepository} from "../../applicationLayer/ports/contactRepository";
-import {MongoDbContactRepository} from "../adapters/mongoDbContactRepository";
-import {Db, MongoClient} from "mongodb";
-import {MongoDbProvider} from "../providers/mongoDbProvider";
-import {CreateContactUseCase} from "../../applicationLayer/createContact/createContactUseCase";
-import {interfaces, TYPE} from "inversify-restify-utils";
-import {CreateContactController} from "../controllers/createContactController";
-import {AbstractValidator} from "fluent-ts-validator";
-import {NewContactDataValidator} from "../validators/newContactDataValidator";
-import {NewContactDataContactAdapter} from "../adapters/newContactDataContactAdapter";
-import {ContactAdapter} from "../../applicationLayer/ports/contactAdapter";
-import {NewContactData} from "../restModels/newContactData";
+import {AbstractValidator} from 'fluent-ts-validator';
+import {Container, decorate, injectable} from 'inversify';
+import {interfaces, TYPE} from 'inversify-restify-utils';
+import {Db, MongoClient} from 'mongodb';
+import 'reflect-metadata';
+import {CreateContactUseCase} from '../../applicationLayer/createContact/CreateContactUseCase';
+import {ContactAdapter} from '../../applicationLayer/ports/ContactAdapter';
+import {ContactRepository} from '../../applicationLayer/ports/ContactRepository';
+import {ContactBuilder} from '../../domainLayer/builders/ContactBuilder';
+import {ContactValidator} from '../../domainLayer/validators/ContactValidator';
+import {MongoDbContactRepository} from '../adapters/MongoDbContactRepository';
+import {NewContactDataContactAdapter} from '../adapters/NewContactDataContactAdapter';
+import {CreateContactController} from '../controllers/CreateContactController';
+import {MongoDbProvider} from '../providers/MongoDbProvider';
+import {NewContactData} from '../restModels/NewContactData';
+import {NewContactDataValidator} from '../validators/NewContactDataValidator';
 
 decorate(injectable(), AbstractValidator);
 decorate(injectable(), ContactAdapter);
 
+// tslint:disable-next-line
 export const container = new Container();
 
 container.bind<interfaces.Controller>(TYPE.Controller).to(CreateContactController);
@@ -28,8 +29,16 @@ container.bind<NewContactDataValidator>(NewContactDataValidator).to(NewContactDa
 container.bind<NewContactDataContactAdapter>(NewContactDataContactAdapter).to(NewContactDataContactAdapter);
 container.bind<ContactRepository>('ContactRepository').to(MongoDbContactRepository);
 container.bind<ContactAdapter<NewContactData>>('ContactAdapter').to(NewContactDataContactAdapter);
-container.bind<MongoDbProvider>('MongoDb').toProvider<Db>((context) => {
+container.bind<MongoDbProvider>('MongoDb').toProvider<Db>(() => {
     return () => {
-        return MongoClient.connect(`mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_HOSTNAME}:${process.env.MONGO_DB_PORT}/${process.env.MONGO_DB_NAME}`);
-    }
+        const url = [
+            'mongodb://',
+            `${process.env.MONGO_DB_USER}:`,
+            `${process.env.MONGO_DB_PASSWORD}@`,
+            `${process.env.MONGO_DB_HOSTNAME}:`,
+            `${process.env.MONGO_DB_PORT}/`,
+            `${process.env.MONGO_DB_NAME}`
+        ].join('');
+        return MongoClient.connect(url);
+    };
 });

@@ -1,6 +1,6 @@
-import {AbstractValidator} from "fluent-ts-validator";
-import {Contact} from "../entities/contact";
-import {injectable} from "inversify";
+import {AbstractValidator} from 'fluent-ts-validator';
+import {injectable} from 'inversify';
+import {Contact} from '../entities/Contact';
 
 @injectable()
 export class ContactValidator extends AbstractValidator<Contact> {
@@ -8,7 +8,7 @@ export class ContactValidator extends AbstractValidator<Contact> {
     constructor() {
         super();
         this.validateIfString(contact => contact.id).isUuid();
-        this.validateIfString(contact => contact.firstName || contact.lastName).isNotEmpty();
+        this.validateIfAny(contact => contact.firstName || contact.lastName).isNotEmpty();
         this.validateIfString(contact => contact.email)
             .isEmail()
             .unless(contact => contact.email == null);

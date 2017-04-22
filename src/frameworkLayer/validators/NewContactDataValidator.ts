@@ -1,9 +1,9 @@
-import {AbstractValidator} from "fluent-ts-validator";
-import {injectable} from "inversify";
+/* tslint:disable */
+import {AbstractValidator} from 'fluent-ts-validator';
+import {injectable} from 'inversify';
 
 @injectable()
 export class NewContactDataValidator extends AbstractValidator<any> {
-
     constructor() {
         super();
 
@@ -27,6 +27,6 @@ export class NewContactDataValidator extends AbstractValidator<any> {
             .isString()
             .matches(/\d{4}-\d{2}-\d{2}/)
             .when(data => data.dateOfBirth != null && data.dateOfBirth !== '')
-            .withFailureMessage(`dateOfBirth-format must be 'YYYY-MM-DD'`);
+            .withFailureMessage('dateOfBirth-format must be YYYY-MM-DD');
     }
 }

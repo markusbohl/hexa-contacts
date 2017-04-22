@@ -1,12 +1,12 @@
-import * as restify from "restify";
-import * as HttpStatus from "http-status-codes";
-import {injectable} from "inversify";
-import {Controller, interfaces, Post} from "inversify-restify-utils";
-import {CreateContactUseCase} from "../../applicationLayer/createContact/createContactUseCase";
-import {IllegalStateError} from "../../domainLayer/errors/illegalStateError";
-import {NewContactDataValidator} from "../validators/newContactDataValidator";
-import {NewContactData} from "../restModels/newContactData";
-
+import * as HttpStatus from 'http-status-codes';
+import {injectable} from 'inversify';
+import {Controller, interfaces, Post} from 'inversify-restify-utils';
+import * as restify from 'restify';
+import {CreateContactUseCase} from '../../applicationLayer/createContact/CreateContactUseCase';
+import {Contact} from '../../domainLayer/entities/Contact';
+import {IllegalStateError} from '../../domainLayer/errors/IllegalStateError';
+import {NewContactData} from '../restModels/NewContactData';
+import {NewContactDataValidator} from '../validators/NewContactDataValidator';
 
 @injectable()
 @Controller('api/v1')
@@ -16,18 +16,18 @@ export class CreateContactController implements interfaces.Controller {
     }
 
     @Post('/contact')
-    public create(req: restify.Request, res: restify.Response) {
+    create(req: restify.Request, res: restify.Response) {
         const result = this.inputValidator.validate(req.body);
 
         if (result.isInvalid()) {
             res.send(HttpStatus.BAD_REQUEST, {
-                code: "InvalidContent",
+                code: 'InvalidContent',
                 message: result.getFailures().map(f => f.message).join(', ')
             });
         } else {
-            const newContactData = req.body as NewContactData;
+            const newContactData = <NewContactData>req.body;
             this.useCase.createContact(newContactData)
-                .then(contact => {
+                .then((contact: Contact) => {
                     res.send(HttpStatus.CREATED, contact);
                 })
                 .catch(reason => {

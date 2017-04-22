@@ -1,8 +1,8 @@
-import {ContactAdapter} from "../../applicationLayer/ports/contactAdapter";
-import {NewContactData} from "../restModels/newContactData";
-import {Contact} from "../../domainLayer/entities/contact";
-import {injectable} from "inversify";
-import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
+import {injectable} from 'inversify';
+import {ContactAdapter} from '../../applicationLayer/ports/ContactAdapter';
+import {ContactBuilder} from '../../domainLayer/builders/ContactBuilder';
+import {Contact} from '../../domainLayer/entities/Contact';
+import {NewContactData} from '../restModels/NewContactData';
 
 @injectable()
 export class NewContactDataContactAdapter extends ContactAdapter<NewContactData> {

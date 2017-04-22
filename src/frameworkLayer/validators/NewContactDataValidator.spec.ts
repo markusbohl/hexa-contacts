@@ -1,5 +1,4 @@
-import {NewContactDataValidator} from "./newContactDataValidator";
-import {NewContactData} from "../restModels/newContactData";
+import {NewContactDataValidator} from './NewContactDataValidator';
 
 describe('NewContactDataValidator', () => {
     let validator: NewContactDataValidator;

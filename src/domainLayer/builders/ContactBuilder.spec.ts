@@ -1,7 +1,7 @@
-import "jasmine";
-import {ContactBuilder} from "./contactBuilder";
-import {ContactValidator} from "../validators/contactValidator";
-import {IllegalStateError} from "../errors/illegalStateError";
+import 'jasmine';
+import {IllegalStateError} from '../errors/IllegalStateError';
+import {ContactValidator} from '../validators/ContactValidator';
+import {ContactBuilder} from './ContactBuilder';
 
 describe('ContactBuilder', () => {
     let contactBuilder: ContactBuilder;

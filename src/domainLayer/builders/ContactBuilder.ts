@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import * as uuid from "uuid";
-import {Contact} from "../entities/contact";
-import {ContactValidator} from "../validators/contactValidator";
-import {IllegalStateError} from "../errors/illegalStateError";
-import {injectable} from "inversify";
+import {injectable} from 'inversify';
+import 'reflect-metadata';
+import * as uuid from 'uuid';
+import {Contact} from '../entities/Contact';
+import {IllegalStateError} from '../errors/IllegalStateError';
+import {ContactValidator} from '../validators/ContactValidator';
 
 @injectable()
 export class ContactBuilder {

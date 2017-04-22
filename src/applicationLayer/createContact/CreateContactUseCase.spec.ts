@@ -1,12 +1,11 @@
 import 'jasmine';
-import {CreateContactUseCase} from "./createContactUseCase";
-import {ContactRepository} from "../ports/contactRepository";
-import {Contact} from "../../domainLayer/entities/contact";
-import {anything, instance, mock, verify, when} from "ts-mockito";
-import {NewContactData} from "../../frameworkLayer/restModels/newContactData";
-import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
-import {IllegalStateError} from "../../domainLayer/errors/illegalStateError";
-import {ContactAdapter} from "../ports/contactAdapter";
+import {anything, instance, mock, verify, when} from 'ts-mockito';
+import {Contact} from '../../domainLayer/entities/Contact';
+import {IllegalStateError} from '../../domainLayer/errors/IllegalStateError';
+import {NewContactData} from '../../frameworkLayer/restModels/NewContactData';
+import {ContactAdapter} from '../ports/ContactAdapter';
+import {ContactRepository} from '../ports/ContactRepository';
+import {CreateContactUseCase} from './CreateContactUseCase';
 
 describe('CreateContactUseCase', () => {
     let mockedRepository: ContactRepository;
@@ -65,7 +64,7 @@ class TestContactRepository implements ContactRepository {
         return null;
     }
 
-    get(id: string): Promise<Contact> {
+    getContact(id: string): Promise<Contact> {
         return null;
     }
 

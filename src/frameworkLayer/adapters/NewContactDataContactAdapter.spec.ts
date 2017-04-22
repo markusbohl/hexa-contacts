@@ -1,7 +1,7 @@
-import {NewContactDataContactAdapter} from "./newContactDataContactAdapter";
-import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
-import {NewContactData} from "../restModels/newContactData";
-import {ContactValidator} from "../../domainLayer/validators/contactValidator";
+import {ContactBuilder} from '../../domainLayer/builders/ContactBuilder';
+import {ContactValidator} from '../../domainLayer/validators/ContactValidator';
+import {NewContactData} from '../restModels/NewContactData';
+import {NewContactDataContactAdapter} from './NewContactDataContactAdapter';
 
 describe('NewContactDataContactAdapter', () => {
     let adapter: NewContactDataContactAdapter;

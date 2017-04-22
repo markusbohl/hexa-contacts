@@ -1,12 +1,12 @@
 import 'jasmine';
-import {MongoDbProvider} from "../providers/mongoDbProvider";
-import {Collection, Db} from "mongodb";
-import {instance, mock, when} from "ts-mockito";
-import {ContactRepository} from "../../applicationLayer/ports/contactRepository";
-import {MongoDbContactRepository} from "./mongoDbContactRepository";
-import {Contact} from "../../domainLayer/entities/contact";
-import {ContactValidator} from "../../domainLayer/validators/contactValidator";
-import {ContactBuilder} from "../../domainLayer/builders/contactBuilder";
+import {Collection, Db} from 'mongodb';
+import {instance, mock, when} from 'ts-mockito';
+import {ContactRepository} from '../../applicationLayer/ports/ContactRepository';
+import {ContactBuilder} from '../../domainLayer/builders/ContactBuilder';
+import {Contact} from '../../domainLayer/entities/Contact';
+import {ContactValidator} from '../../domainLayer/validators/ContactValidator';
+import {MongoDbProvider} from '../providers/MongoDbProvider';
+import {MongoDbContactRepository} from './MongoDbContactRepository';
 
 describe('MongoDbContactRepository', () => {
     let contact: Contact;
@@ -18,10 +18,11 @@ describe('MongoDbContactRepository', () => {
     beforeEach(() => {
         mockedMongoDb = mock(Db);
         collection = <Collection>{
-            insertOne: function(docs: Object) {}
+            insertOne: function (docs: Object) {
+            }
         };
         dbProvider = () => {
-           return Promise.resolve(instance(mockedMongoDb));
+            return Promise.resolve(instance(mockedMongoDb));
         };
         contactRepository = new MongoDbContactRepository(dbProvider);
         contact = new ContactBuilder(new ContactValidator())

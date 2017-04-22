@@ -1,10 +1,10 @@
-import {Contact} from "../../domainLayer/entities/contact";
+import {Contact} from '../../domainLayer/entities/Contact';
 
 export interface ContactRepository {
 
     add(contact: Contact): Promise<void>;
 
-    get(id: string): Promise<Contact>;
+    getContact(id: string): Promise<Contact>;
 
     getAll(): Promise<Contact[]>;
 }

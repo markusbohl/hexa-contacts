@@ -1,6 +1,6 @@
-import "jasmine";
-import {ContactValidator} from "./contactValidator";
-import {Contact} from "../entities/contact";
+import 'jasmine';
+import {Contact} from '../entities/Contact';
+import {ContactValidator} from './ContactValidator';
 
 describe('ContactValidator', () => {
     let validator: ContactValidator;
@@ -36,7 +36,7 @@ describe('ContactValidator', () => {
 
         it('should declare contact with improper email as invalid', () => {
             contact.lastName = 'lastname';
-            contact.email = "foo@bar";
+            contact.email = 'foo@bar';
 
             let result = validator.validate(contact);
 
