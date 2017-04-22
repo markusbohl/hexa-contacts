@@ -18,7 +18,7 @@ describe('CreateContactUseCase', () => {
         useCase = new CreateContactUseCase(instance(mockedContactAdapter), instance(mockedRepository));
     });
 
-    describe('createContact()', () => {
+    describe('useCases()', () => {
         it('should reject the returned promise if contact-builder throws an error', async (done) => {
             const contactData = new NewContactData();
             const error = new IllegalStateError();

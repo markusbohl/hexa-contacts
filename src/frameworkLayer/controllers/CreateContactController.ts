@@ -2,7 +2,7 @@ import * as HttpStatus from 'http-status-codes';
 import {injectable} from 'inversify';
 import {Controller, interfaces, Post} from 'inversify-restify-utils';
 import * as restify from 'restify';
-import {CreateContactUseCase} from '../../applicationLayer/createContact/CreateContactUseCase';
+import {CreateContactUseCase} from '../../applicationLayer/useCases/CreateContactUseCase';
 import {Contact} from '../../domainLayer/entities/Contact';
 import {IllegalStateError} from '../../domainLayer/errors/IllegalStateError';
 import {NewContactData} from '../restModels/NewContactData';

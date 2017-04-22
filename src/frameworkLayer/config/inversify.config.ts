@@ -3,7 +3,7 @@ import {Container, decorate, injectable} from 'inversify';
 import {interfaces, TYPE} from 'inversify-restify-utils';
 import {Db, MongoClient} from 'mongodb';
 import 'reflect-metadata';
-import {CreateContactUseCase} from '../../applicationLayer/createContact/CreateContactUseCase';
+import {CreateContactUseCase} from '../../applicationLayer/useCases/CreateContactUseCase';
 import {ContactAdapter} from '../../applicationLayer/ports/ContactAdapter';
 import {ContactRepository} from '../../applicationLayer/ports/ContactRepository';
 import {ContactBuilder} from '../../domainLayer/builders/ContactBuilder';
