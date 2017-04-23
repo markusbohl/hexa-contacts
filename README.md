@@ -1,6 +1,7 @@
 # hexa-contacts
 
-A simple (learning) project to familiarize myself with the principles of **hexagonal architecture** (aka **Ports & Adapters**) and **TypeScript**, **Angular2**, and **Node.js**.
+A simple pet project to familiarize myself with the principles of **hexagonal architecture** (aka 
+**Ports & Adapters**), **TypeScript**, **Angular**, and **Node.js**.
 
 In case *hexagonal architecture* doesn't ring a bell with you a good starting point might be this great [blog post][1] by Chris Fidao.
 

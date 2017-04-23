@@ -1,1 +1,0 @@
-{"version":3,"sources":["domainLayer/entities/Identity.ts"],"names":[],"mappings":"AAAA,YAAY,CAAC;AAEb;IAGI,YAAY,EAAU;QAClB,IAAI,CAAC,GAAG,GAAG,EAAE,CAAC;IAClB,CAAC;IAED,IAAI,EAAE;QACF,MAAM,CAAC,IAAI,CAAC,GAAG,CAAC;IACpB,CAAC;AACL,CAAC;AAVY,gBAAQ,WAUpB,CAAA","file":"Identity.js","sourceRoot":"../../../src/"}

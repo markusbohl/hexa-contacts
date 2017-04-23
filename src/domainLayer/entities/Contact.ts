@@ -1,29 +1,13 @@
-"use strict";
+import {Identifiable} from './Identifiable';
 
-import { Identity } from "./Identity";
+export class Contact extends Identifiable {
 
-export class Contact extends Identity {
+    firstName: string;
+    lastName: string;
+    email: string;
+    dateOfBirth: Date;
 
-    private _firstName: string;
-    private _lastName: string;
-    private _dateOfBirth: Date;
-
-    constructor(id: string, firstName: string, lastName: string, dateOfBirth: Date) {
+    constructor(id: string) {
         super(id);
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._dateOfBirth = dateOfBirth;
-    }
-
-    get firstName(): string {
-        return this._firstName;
-    }
-
-    get lastName(): string {
-        return this._lastName;
-    }
-
-    get dateOfBirth(): Date {
-        return this._dateOfBirth;
     }
 }
