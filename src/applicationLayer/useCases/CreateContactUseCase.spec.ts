@@ -60,16 +60,24 @@ describe('CreateContactUseCase', () => {
 });
 
 class TestContactRepository implements ContactRepository {
+    update(contact: Contact): Promise<void> {
+        return undefined;
+    }
+
+    deleteContact(id: string): Promise<void> {
+        return undefined;
+    }
+
     add(contact: Contact): Promise<void> {
-        return null;
+        return undefined;
     }
 
     getContact(id: string): Promise<Contact> {
-        return null;
+        return undefined;
     }
 
     getAll(): Promise<Contact[]> {
-        return null;
+        return undefined;
     }
 }
 

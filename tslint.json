@@ -9,6 +9,7 @@
     "completed-docs": false,
     "missing-jsdoc": false,
     "no-unsafe-any": false,
+    "no-void-expression": false,
     "no-relative-imports": false,
     "no-parameter-properties": false,
     "typedef": false,

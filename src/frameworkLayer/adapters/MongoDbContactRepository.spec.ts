@@ -24,7 +24,7 @@ describe('MongoDbContactRepository', () => {
         dbProvider = () => {
             return Promise.resolve(instance(mockedMongoDb));
         };
-        contactRepository = new MongoDbContactRepository(dbProvider);
+        contactRepository = new MongoDbContactRepository(dbProvider, 'collectionName');
         contact = new ContactBuilder(new ContactValidator())
             .id('123e4567-e89b-12d3-a456-426655440000')
             .firstName('firstname')
@@ -37,7 +37,7 @@ describe('MongoDbContactRepository', () => {
     describe('add()', () => {
         it('should insert contact at contacts-collection', (done) => {
             spyOn(collection, 'insertOne').and.returnValue(Promise.resolve());
-            when(mockedMongoDb.collection('contacts')).thenReturn(collection);
+            when(mockedMongoDb.collection('collectionName')).thenReturn(collection);
 
             contactRepository.add(contact).then(() => {
                 expect(collection.insertOne).toHaveBeenCalledWith(contact);
@@ -50,7 +50,7 @@ describe('MongoDbContactRepository', () => {
 
         it('should reject promise if insert operations fails', (done) => {
             spyOn(collection, 'insertOne').and.returnValue(Promise.reject('fail'));
-            when(mockedMongoDb.collection('contacts')).thenReturn(collection);
+            when(mockedMongoDb.collection('collectionName')).thenReturn(collection);
 
             contactRepository.add(contact).then(() => {
                 fail();
@@ -65,7 +65,7 @@ describe('MongoDbContactRepository', () => {
             dbProvider = () => {
                 return Promise.reject('fail');
             };
-            contactRepository = new MongoDbContactRepository(dbProvider);
+            contactRepository = new MongoDbContactRepository(dbProvider, 'collectionName');
 
             contactRepository.add(contact).then(() => {
                 fail();
