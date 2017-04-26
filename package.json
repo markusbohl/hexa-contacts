@@ -1,7 +1,7 @@
 {
   "name": "hexa-contacts",
   "version": "0.1.0",
-  "main": "server.js",
+  "main": "index.js",
   "repository": "https://github.com/markusbohl/hexa-contacts.git",
   "author": "Markus Bohl <markus.bohl@gmail.com>",
   "license": "MIT",
