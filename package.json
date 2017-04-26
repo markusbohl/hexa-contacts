@@ -1,7 +1,7 @@
 {
   "name": "hexa-contacts",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/markusbohl/hexa-contacts.git",
   "author": "Markus Bohl <markus.bohl@gmail.com>",
   "license": "MIT",
@@ -38,6 +38,7 @@
     "test": "jasmine-ts 'src/**/*.spec.ts'",
     "tdd": "nodemon --watch src --ext ts --exec 'npm test'",
     "build": "rimraf dist && tsc && copyfiles package.json dist",
-    "start": "nodemon --watch src --ext ts --ignore 'src/**/*.spec.ts' --exec 'ts-node src/server.ts'"
+    "serve": "nodemon --watch src --ext ts --ignore 'src/**/*.spec.ts' --exec 'ts-node src/server.ts'",
+    "start": "node dist/server.js"
   }
 }
