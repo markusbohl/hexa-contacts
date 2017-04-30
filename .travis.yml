@@ -12,7 +12,7 @@ script:
 
 deploy:
   provider: script
-  skript: sh ./travis-azure-integration.sh $GIT_USERNAME $GIT_EMAIL $AZURE_WA_USERNAME $AZURE_WA_PASSWORD $AZURE_WA_SITE
+  skript: sh ./travis-azure-integration.sh
   skip_cleanup: true
   on:
     all_branches: true
