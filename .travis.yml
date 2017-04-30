@@ -12,7 +12,7 @@ script:
 
 deploy:
   provider: script
-  skript: sh ./travis-azure-integration.sh
+  skript: travis-azure-integration.sh
   skip_cleanup: true
   on:
     all_branches: true
