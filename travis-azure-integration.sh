@@ -15,7 +15,7 @@ cp package.json release/
 cd release
 git init
 git add -A
-git -c user.name=$GIT_USER -c user.email=$GIT_EMAIL commit -m "Auto-Deployment: $TRAVIS_BRANCH $TRAVIS_COMMIT"
+git -c user.name=$GIT_USER -c user.email=$GIT_EMAIL commit -m "Auto-Deployment"
 git remote add azure https://$AZURE_USER:$AZURE_PASSWORD@$AZURE_SITE.scm.azurewebsites.net/$AZURE_SITE.git
 git push -f -q azure master
 
