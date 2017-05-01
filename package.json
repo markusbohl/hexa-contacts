@@ -39,7 +39,7 @@
     "build": "rimraf build && tsc",
     "serve": "nodemon --watch src --ext ts --ignore 'src/**/*.spec.ts' --exec 'ts-node src/server.ts'",
     "prepush-to-azure": "npm run build && npm run _prepare-deployment-directory && npm run _prepare_git_for_deployment",
-    "_prepare-deployment-directory": "mkdir deployment && cp -R build/ deployment && cp package.json .deployment deploy.sh deployment",
+    "_prepare-deployment-directory": "mkdir deployment && cp -R build/ deployment && cp package.json deployment",
     "_prepare_git_for_deployment": "cd deployment && npm run _commit_to_git && npm run _add_azure_repo",
     "_commit_to_git": "git init && git add -A && git -c user.name=${GIT_USERNAME} -c user.email=${GIT_EMAIL} commit -m 'Auto-Deployment'",
     "_add_azure_repo": "git remote add azure https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_SITE}.scm.azurewebsites.net/${AZURE_WA_SITE}.git",
