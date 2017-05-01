@@ -13,9 +13,11 @@ script:
 deploy:
   - provider: script
     script: npm run push-to-azure
+    skip_cleanup: true
     on:
       branch: develop
   - provider: script
     script: npm run push-to-azure
+    skip_cleanup: true
     on:
       branch: master
