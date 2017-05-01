@@ -11,9 +11,11 @@ script:
   - npm run build
 
 deploy:
-  provider: script
-  script: npm run push-to-azure
-  branches:
-    only: 
-    - master
-    - develop
+  - provider: script
+    script: npm run push-to-azure
+    on:
+      branch: develop
+  - provider: script
+    script: npm run push-to-azure
+    on:
+      branch: master
