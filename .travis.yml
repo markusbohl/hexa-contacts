@@ -13,3 +13,7 @@ script:
 deploy:
   provider: script
   script: npm run push-to-azure
+  branches:
+    only: 
+    - master
+    - develop
