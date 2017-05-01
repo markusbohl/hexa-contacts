@@ -44,6 +44,7 @@
     "_commit_to_git": "git init && git add -A && git -c user.name=${GIT_USERNAME} -c user.email=${GIT_EMAIL} commit -m 'Auto-Deployment'",
     "_add_azure_repo": "git remote add azure https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_SITE}.scm.azurewebsites.net/${AZURE_WA_SITE}.git",
     "push-to-azure": "cd deployment && git push -f -q azure master",
-    "postpush-to-azure": "rm -rf deployment"
+    "postpush-to-azure": "rm -rf deployment",
+    "start": "node server.js"
   }
 }
