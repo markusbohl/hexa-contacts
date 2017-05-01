@@ -42,7 +42,7 @@
     "_prepare-deployment-directory": "mkdir deployment && cp -R build/ deployment && cp package.json .deployment deploy.sh deployment",
     "_prepare_git_for_deployment": "cd deployment && npm run _commit_to_git && npm run _add_azure_repo",
     "_commit_to_git": "git init && git add -A && git -c user.name=${GIT_USERNAME} -c user.email=${GIT_EMAIL} commit -m 'Auto-Deployment'",
-    "_add_azure_repo": "git remote add azure https://${AZURE_WA_USER}:${AZURE_WA_PASSWORD}@${AZURE_WA_SITE}.scm.azurewebsites.net/${AZURE_WA_SITE}.git",
+    "_add_azure_repo": "git remote add azure https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_SITE}.scm.azurewebsites.net/${AZURE_WA_SITE}.git",
     "push-to-azure": "cd deployment && git push -f -q azure master",
     "postpush-to-azure": "rm -rf deployment"
   }
