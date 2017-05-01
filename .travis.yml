@@ -9,4 +9,10 @@ script:
   - npm run lint
   - npm run test
   - npm run build
+
+deploy:
   - npm run push-to-azure
+#  branches:
+#    only:
+#    - master
+#    - develop
