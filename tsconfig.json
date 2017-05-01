@@ -14,7 +14,7 @@
     "emitDecoratorMetadata": true,
     "noImplicitAny": false,
     "sourceMap": false,
-    "outDir": "dist"
+    "outDir": "build"
   },
   "exclude": [
     "node_modules"

@@ -9,10 +9,4 @@ script:
   - npm run lint
   - npm run test
   - npm run build
-
-deploy:
-  provider: script
-  skript: sh scripts/travis-azure-integration.sh
-  skip_cleanup: true
-  on:
-    all_branches: true
+  - npm run push-to-azure
