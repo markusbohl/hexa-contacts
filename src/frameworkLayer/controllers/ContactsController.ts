@@ -1,10 +1,10 @@
 import * as HttpStatus from 'http-status-codes';
+import * as hystrix from 'hystrixjs';
 import {injectable} from 'inversify';
 import {Controller, Get, interfaces, Post} from 'inversify-restify-utils';
 import * as restify from 'restify';
 import {CreateContactUseCase} from '../../applicationLayer/useCases/CreateContactUseCase';
 import {GetAllContactsUseCase} from '../../applicationLayer/useCases/GetAllContactsUseCase';
-import {Contact} from '../../domainLayer/entities/Contact';
 import {IllegalStateError} from '../../domainLayer/errors/IllegalStateError';
 import {NewContactData} from '../restModels/NewContactData';
 import {NewContactDataValidator} from '../validators/NewContactDataValidator';
@@ -32,11 +32,11 @@ export class ContactsController implements interfaces.Controller {
         if (result.isInvalid()) {
             res.send(HttpStatus.BAD_REQUEST, {
                 code: 'InvalidContent',
-                message: result.getFailures().map(f => f.message).join(', ')
+                message: result.getFailureMessages().join(', ')
             });
         } else {
             const newContactData = <NewContactData>req.body;
-            this.createContactUseCase.createContact(newContactData)
+            this.createContactCommand().execute(newContactData)
                 .then(contact => res.send(HttpStatus.CREATED, contact))
                 .catch(reason => {
                     if (reason instanceof IllegalStateError) {
@@ -46,5 +46,33 @@ export class ContactsController implements interfaces.Controller {
                     }
                 });
         }
+    }
+
+    @Get('/hystrix.stream')
+    hystrixStream(req: restify.Request, res: restify.Response) {
+        res.contentType = 'text/event-stream;charset=UTF-8';
+        res.setHeader('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+
+        return hystrix.hystrixSSEStream.toObservable().subscribe(
+            (sseData) => {
+                console.log(sseData);
+                res.write('data: ' + sseData + '\n\n');
+            },
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                console.log('end');
+                res.end();
+            });
+    }
+
+    private createContactCommand(): hystrix.Command {
+        const commandFactory = hystrix.commandFactory;
+
+        return commandFactory.getOrCreate('CreateContact').run((newContactData: NewContactData) => {
+            return this.createContactUseCase.createContact(newContactData);
+        }).build();
     }
 }
