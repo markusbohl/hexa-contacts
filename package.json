@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "dtrace-provider": "^0.8.1",
-    "fluent-ts-validator": "1.0.0",
+    "fluent-ts-validator": "3.0.3",
     "http-status-codes": "^1.1.6",
     "inversify": "^3.3.0",
     "inversify-restify-utils": "^3.2.0",
