@@ -1,0 +1,21 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - inversify-restify-utils > restify > spdy > debug:
+        patched: '2022-10-09T20:11:24.181Z'
+    - inversify-restify-utils > restify > spdy > spdy-transport > debug:
+        patched: '2022-10-09T20:11:24.181Z'
+  'npm:mime:20170907':
+    - inversify-restify-utils > restify > mime:
+        patched: '2022-10-09T20:11:24.181Z'
+  'npm:ms:20170412':
+    - inversify-restify-utils > restify > spdy > debug > ms:
+        patched: '2022-10-09T20:11:24.181Z'
+    - inversify-restify-utils > restify > spdy > spdy-transport > debug > ms:
+        patched: '2022-10-09T20:11:24.181Z'
+  'npm:tunnel-agent:20170305':
+    - inversify-restify-utils > restify > tunnel-agent:
+        patched: '2022-10-09T20:11:24.181Z'

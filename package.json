@@ -24,13 +24,14 @@
   },
   "dependencies": {
     "dtrace-provider": "^0.8.1",
-    "fluent-ts-validator": "1.0.0",
+    "fluent-ts-validator": "3.0.3",
     "http-status-codes": "^1.1.6",
     "inversify": "^3.3.0",
-    "inversify-restify-utils": "^3.2.0",
-    "mongodb": "^2.2.26",
+    "inversify-restify-utils": "^3.4.1",
+    "mongodb": "^3.1.13",
     "reflect-metadata": "^0.1.10",
-    "uuid": "3.0.1"
+    "uuid": "3.0.1",
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "lint": "tslint --type-check --project tsconfig.json --exclude src/**/*.spec.ts src/**/*.ts",
@@ -44,6 +45,9 @@
     "_commit_to_git": "git init && git add -A && git -c user.name=${GIT_USERNAME} -c user.email=${GIT_EMAIL} commit -m 'Auto-Deployment'",
     "_add_azure_repo": "git remote add azure https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_SITE}.scm.azurewebsites.net/${AZURE_WA_SITE}.git",
     "push-to-azure": "cd deployment && git push -f -q azure master",
-    "postpush-to-azure": "rm -rf deployment"
-  }
+    "postpush-to-azure": "rm -rf deployment",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
