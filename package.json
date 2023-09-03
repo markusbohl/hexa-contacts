@@ -30,7 +30,8 @@
     "inversify-restify-utils": "^3.2.0",
     "mongodb": "^2.2.26",
     "reflect-metadata": "^0.1.10",
-    "uuid": "3.0.1"
+    "uuid": "3.0.1",
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "lint": "tslint --type-check --project tsconfig.json --exclude src/**/*.spec.ts src/**/*.ts",
@@ -44,6 +45,9 @@
     "_commit_to_git": "git init && git add -A && git -c user.name=${GIT_USERNAME} -c user.email=${GIT_EMAIL} commit -m 'Auto-Deployment'",
     "_add_azure_repo": "git remote add azure https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_SITE}.scm.azurewebsites.net/${AZURE_WA_SITE}.git",
     "push-to-azure": "cd deployment && git push -f -q azure master",
-    "postpush-to-azure": "rm -rf deployment"
-  }
+    "postpush-to-azure": "rm -rf deployment",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
